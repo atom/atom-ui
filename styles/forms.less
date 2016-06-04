@@ -6,54 +6,35 @@
 // Forms
 // --------------------------------------------------
 
-//** `<input>` background color
-@input-bg:                       #fff;
-//** `<input disabled>` background color
-@input-bg-disabled:              @gray-lighter;
 
-//** Text color for `<input>`s
-@input-color:                    @gray;
-//** `<input>` border color
-@input-border:                   #ccc;
+@input-bg:                       #fff; //** `<input>` background color
+@input-bg-disabled:              @gray-lighter; //** `<input disabled>` background color
+@input-color:                    @gray; //** Text color for `<input>`s
+@input-border:                   #ccc; //** `<input>` border color
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
 // This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
-@input-border-radius:            @border-radius-base;
-//** Large `.form-control` border radius
-@input-border-radius-large:      @border-radius-large;
-//** Small `.form-control` border radius
+@input-border-radius:            @border-radius-base; //** Large `.form-control` border radius
+@input-border-radius-large:      @border-radius-large; //** Small `.form-control` border radius
 @input-border-radius-small:      @border-radius-small;
+@input-border-focus:             #66afe9; //** Border color for inputs on focus
+@input-color-placeholder:        #999; //** Placeholder text color
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2); //** Default `.form-control` height
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2); //** Large `.form-control` height
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2); //** Small `.form-control` height
 
-//** Border color for inputs on focus
-@input-border-focus:             #66afe9;
-
-//** Placeholder text color
-@input-color-placeholder:        #999;
-
-//** Default `.form-control` height
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-//** Large `.form-control` height
-@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
-//** Small `.form-control` height
-@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
-
-//** `.form-group` margin
-@form-group-margin-bottom:       15px;
+@form-group-margin-bottom:       15px; //** `.form-group` margin
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
 
-//** Background color for textual input addons
-@input-group-addon-bg:           @gray-lighter;
-//** Border color for textual input addons
-@input-group-addon-border-color: @input-border;
+@input-group-addon-bg:           @gray-lighter; //** Background color for textual input addons
+@input-group-addon-border-color: @input-border; //** Border color for textual input addons
 
-//** Disabled cursor for form controls and buttons.
-@cursor-disabled:                not-allowed;
+@cursor-disabled:                not-allowed; //** Disabled cursor for form controls and buttons.
 
-//** Padding between columns. Gets divided in half for the left and right.
-@grid-gutter-width:         30px;
+@grid-gutter-width:         30px; //** Padding between columns. Gets divided in half for the left and right.
 
 
 // Form validation states
@@ -312,49 +293,6 @@ output {
   // Reset height for `textarea`s
   textarea& {
     height: auto;
-  }
-}
-
-
-// Search inputs in iOS
-//
-// This overrides the extra rounded corners on search inputs in iOS so that our
-// `.form-control` class can properly style them. Note that this cannot simply
-// be added to `.form-control` as it's not specific enough. For details, see
-// https://github.com/twbs/bootstrap/issues/11586.
-
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
-
-// Special styles for iOS temporal inputs
-//
-// In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned. As a workaround, we
-// set a pixel line-height that matches the given height of the input, but only
-// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
-//
-// Note that as of 8.3, iOS doesn't support `datetime` or `week`.
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"],
-  input[type="time"],
-  input[type="datetime-local"],
-  input[type="month"] {
-    &.form-control {
-      line-height: @input-height-base;
-    }
-
-    &.input-sm,
-    .input-group-sm & {
-      line-height: @input-height-small;
-    }
-
-    &.input-lg,
-    .input-group-lg & {
-      line-height: @input-height-large;
-    }
   }
 }
 

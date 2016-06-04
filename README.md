@@ -4,28 +4,12 @@
 
 This is Atom's UI library. Originally forked from Bootstrap `3.3.6` then tweaked to Atom's needy needs.
 
+
 ## Components
 
-Open the Styleguide (`cmd-ctrl-shift-g`) to see them in action.
+Here a list of [all components](https://github.com/atom/atom-ui/blob/master/atom-ui.less). Open the Styleguide package (`cmd-ctrl-shift-g`) to see them in action and how to use them.
 
-- Alerts
-- Badges
-- Button Group
-- Buttons
-- Code
-- Forms
-- Icons
-- Links
-- Lists
-- Markdown
-- Messages
-- Navs
-- Popover-list
-- Scaffolding
-- Select-list
-- Tables
-- Text
-- Tooltip
-- Utilities
 
-> __Note__: Currently not all components listed here are in the Styleguide. We're still in the process of adding official support for those that aren't.
+## Feature requests
+
+If you need something, feel free to open an issue and it might can be added. :sign_of_horns:

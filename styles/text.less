@@ -118,6 +118,7 @@ p {
 // -------------------------
 
 // Ex: (12px small font / 14px base font) * 100% = about 85%
+.text-smaller,
 small,
 .small {
   font-size: floor((100% * @font-size-small / @font-size-base));
@@ -141,24 +142,15 @@ mark,
 .text-uppercase      { text-transform: uppercase; }
 .text-capitalize     { text-transform: capitalize; }
 
+// text-classes
+.text-subtle, .text-muted { color: @text-color-subtle; }
+.text-highlight           { color: @text-color-highlight; }
+
 // Contextual colors
-.text-muted {
-  color: @text-muted;
-}
-.text-info,
-.text-primary {
-  .text-variant(info);
-}
-.text-success {
-  .text-variant(success);
-}
-.text-warning {
-  .text-variant(warning);
-}
-.text-error,
-.text-danger {
-  .text-variant(error);
-}
+.text-info, .text-primary { .text-variant(info); }
+.text-success             { .text-variant(success); }
+.text-warning             { .text-variant(warning); }
+.text-error, .text-danger { .text-variant(error); }
 
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
@@ -182,6 +174,34 @@ mark,
   .bg-variant(@state-danger-bg);
 }
 
+
+// Highlight
+// -------------------------
+
+.highlight() {
+  padding: 0 .4em;
+  font-weight: bold;
+  border-radius: @component-border-radius;
+}
+
+.highlight {
+  .highlight();
+  color: @text-color-highlight;
+  background-color: @background-color-highlight;
+}
+
+.highlight-color(@name, @color) {
+  .highlight-@{name} {
+    .highlight();
+    color: #fff;
+    background-color: fadeout(@color, 50%);
+  }
+}
+
+.highlight-color(info,    @background-color-info);
+.highlight-color(warning, @background-color-warning);
+.highlight-color(error,   @background-color-error);
+.highlight-color(success, @background-color-success);
 
 
 // Lists

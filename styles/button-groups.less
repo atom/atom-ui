@@ -163,63 +163,6 @@
 }
 
 
-// Vertical button groups
-// ----------------------
-
-.btn-group-vertical {
-  > .btn,
-  > .btn-group,
-  > .btn-group > .btn {
-    display: block;
-    float: none;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  // Clear floats so dropdown menus can be properly placed
-  > .btn-group {
-    &:extend(.clearfix all);
-    > .btn {
-      float: none;
-    }
-  }
-
-  > .btn + .btn,
-  > .btn + .btn-group,
-  > .btn-group + .btn,
-  > .btn-group + .btn-group {
-    margin-top: -1px;
-    margin-left: 0;
-  }
-}
-
-.btn-group-vertical > .btn {
-  &:not(:first-child):not(:last-child) {
-    border-radius: 0;
-  }
-  &:first-child:not(:last-child) {
-    .border-top-radius(@btn-border-radius-base);
-    .border-bottom-radius(0);
-  }
-  &:last-child:not(:first-child) {
-    .border-top-radius(0);
-    .border-bottom-radius(@btn-border-radius-base);
-  }
-}
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
-  border-radius: 0;
-}
-.btn-group-vertical > .btn-group:first-child:not(:last-child) {
-  > .btn:last-child,
-  > .dropdown-toggle {
-    .border-bottom-radius(0);
-  }
-}
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
-  .border-top-radius(0);
-}
-
-
 // Justified button groups
 // ----------------------
 
@@ -240,30 +183,5 @@
 
   > .btn-group .dropdown-menu {
     left: auto;
-  }
-}
-
-
-// Checkbox and radio options
-//
-// In order to support the browser's form validation feedback, powered by the
-// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
-// `display: none;` or `visibility: hidden;` as that also hides the popover.
-// Simply visually hiding the inputs via `opacity` would leave them clickable in
-// certain cases which is prevented by using `clip` and `pointer-events`.
-// This way, we ensure a DOM element is visible to position the popover from.
-//
-// See https://github.com/twbs/bootstrap/pull/12794 and
-// https://github.com/twbs/bootstrap/pull/14559 for more information.
-
-[data-toggle="buttons"] {
-  > .btn,
-  > .btn-group > .btn {
-    input[type="radio"],
-    input[type="checkbox"] {
-      position: absolute;
-      clip: rect(0,0,0,0);
-      pointer-events: none;
-    }
   }
 }

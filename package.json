@@ -1,6 +1,6 @@
 {
   "name": "atom-ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Atom's UI library",
   "repository": {
     "type": "git",

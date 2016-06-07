@@ -1,5 +1,6 @@
 @import "ui-variables";
 @import "octicon-mixins";
+@import "mixins/mixins";
 
 .select-list {
   .loading {
@@ -28,6 +29,7 @@
 
     li {
       display: block;
+      .clearfix();
 
       .primary-line,
       .secondary-line {
@@ -36,6 +38,10 @@
         overflow: hidden;
       }
     }
+  }
+
+  .status {
+    float: right;
   }
 }
 
@@ -47,10 +53,17 @@
   min-width: 200px;
   margin-left: 0;
   position: relative;
+  background-color: @overlay-background-color;
 
   ol.list-group {
     position: relative;
     overflow-y: scroll;
     max-height: 200px;
+    margin-top: 0;
+  }
+
+  li {
+    padding-left: @component-padding;
+    padding-right: @component-padding;
   }
 }

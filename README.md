@@ -1,6 +1,6 @@
 # :sparkles: Atom UI :sparkles:
 
-This is Atom's UI library. Originally forked from Bootstrap `3.3.6` then tweaked to Atom's needy needs.
+This is Atom's UI library. Originally forked from Bootstrap `3.3.6`, then merged with some core styles and now tweaked to Atom's needy needs.
 
 
 ## Components

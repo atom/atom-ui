@@ -2,6 +2,8 @@
 
 This is Atom's UI library. Originally forked from Bootstrap `3.3.6`, then merged with some core styles and now tweaked to Atom's needy needs.
 
+> Note: This package gets bundled with Atom and isn't meant to be used outside of the Atom editor. It depends on variables provided by Atom themes.
+
 
 ## Components
 

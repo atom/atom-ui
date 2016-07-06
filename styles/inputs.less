@@ -1,0 +1,270 @@
+@import "ui-variables";
+
+//
+// Text Inputs
+// -------------------------
+
+.input-text,
+.input-search,
+.input-number,
+.input-textarea {
+  width: 150px;
+  padding: @component-padding/4 @component-padding/2;
+  border-radius: @component-border-radius;
+  border: 1px solid @input-border-color;
+  background-color: @input-background-color;
+  &::-webkit-input-placeholder {
+    color: @text-color-subtle;
+  }
+  &:invalid {
+    color: @text-color-error;
+    border-color: @background-color-error;
+  }
+}
+
+
+//
+// Search
+// -------------------------
+
+.input-search {
+  &&::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
+}
+
+
+//
+// Number
+// -------------------------
+
+.input-number {
+  width: auto;
+}
+
+
+//
+// Radio
+// -------------------------
+
+.input-radio {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  width: 1.125em;
+  height: 1.125em;
+  margin: 0 .5em 0 0; // Bootstrap override
+  vertical-align: middle;
+  font-size: inherit;
+  border-radius: 1.125em;
+  background-color: @text-color-subtle;
+  transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background-color: @base-background-color;
+    transform: scale(0);
+    transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &&:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: @background-color-info;
+  }
+  &:checked {
+    background-color: @background-color-info;
+    &:before {
+      transform: scale(.5);
+    }
+  }
+}
+
+
+//
+// Checkbox
+// -------------------------
+
+.input-checkbox {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  width: 1.125em;
+  height: 1.125em;
+  margin: 0 .5em 0 0; // Bootstrap override
+  vertical-align: middle;
+  font-size: inherit;
+  border-radius: @component-border-radius;
+  background-color: @text-color-subtle;
+  transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px @base-border-color;
+  }
+  &:active {
+    background-color: @background-color-info;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: .85em;
+    left: .425em;
+    height: .125em;
+    min-height: 2px;
+    max-height: 5px;
+    border-radius: 1px;
+    background-color: @base-background-color;
+    transform-origin: 0 0;
+    opacity: 0;
+    transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1), opacity .1s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &:before {
+    width: .35em;
+    transform: translate3d(0,0,0) rotate(225deg) scale(0);
+  }
+  &:after {
+    width: .7em;
+    margin: -1px;
+    transform: translate3d(0,0,0) rotate(-45deg) scale(0);
+    transition-delay: .05s;
+  }
+
+  &:checked {
+    background-color: @background-color-info;
+    &:active {
+      background-color: @text-color-subtle;
+    }
+    &:before {
+      opacity: 1;
+      transform: translate3d(0,0,0) rotate(225deg) scale(1);
+      transition-delay: .05s;
+    }
+    &:after {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotate(-45deg) scale(1);
+      transition-delay: 0;
+    }
+  }
+
+  &:indeterminate {
+    background-color: @background-color-info;
+    &:active {
+      background-color: @text-color-subtle;
+    }
+    &:after {
+      opacity: 1;
+      transform: translate3d(-.125em, -.25em, 0) rotate(0deg) scale(1);
+      transition-delay: 0;
+    }
+  }
+}
+
+
+//
+// Toggle
+// -------------------------
+
+.input-toggle {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  font-size: inherit;
+  margin: 0 0 0 -3.5em;
+  width: 2.8em;
+  height: 1.4em;
+  border-radius: 2em;
+  background-color: @text-color-subtle;
+  transition: background-color 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  &.input-toggle:focus {
+    outline: 0;
+  }
+  &:checked {
+    background-color: @background-color-info;
+  }
+
+  // Thumb
+  &:before {
+    content: "";
+    position: absolute;
+    width: 1.4em;
+    height: inherit;
+    border-radius: inherit;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: @base-background-color;
+    transition: transform 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &:active:before {
+    opacity: .5;
+  }
+  &:checked:before {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+
+//
+// Slider
+// -------------------------
+
+.input-range {
+  -webkit-appearance: none;
+  margin: @component-padding 0;
+  height: 4px;
+  border-radius: @component-border-radius;
+  border: 1px solid @input-border-color;
+  background-color: @input-background-color;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 1em;
+    background-color: @background-color-info;
+    transition: transform .16s;
+    &:active {
+      transition-duration: 0s;
+      transform: scale(.9);
+    }
+  }
+}
+
+
+//
+// Color
+// -------------------------
+
+.input-color {
+  -webkit-appearance: none;
+  padding: 4px;
+  width: 3em;
+  height: 3em;
+  border-radius: 3em;
+  border: 1px solid @input-border-color;
+  background-color: @input-background-color;
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  &::-webkit-color-swatch {
+    border: 1px solid hsla(0,0%,0%,.2);
+    border-radius: 2em;
+  }
+}
+
+
+//
+// Select
+// -------------------------
+
+.select {
+  height: calc(2em ~'+' 2px);
+  border-radius: @component-border-radius;
+  border: 1px solid @button-border-color;
+  background-color: @button-background-color;
+}

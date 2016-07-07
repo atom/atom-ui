@@ -2,6 +2,7 @@
 
 @component-size: @component-icon-size; // use for text-less controls like radio, checkboxes etc.
 @text-component-height: 2em;
+@component-background-color: mix(@text-color, @base-background-color, 20%);
 
 //
 // Text Inputs
@@ -60,7 +61,7 @@
   vertical-align: middle;
   font-size: inherit;
   border-radius: 50%;
-  background-color: @text-color-subtle;
+  background-color: @component-background-color;
   transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
   && { margin: 0 .5em 0 0; } // override bootstrap
@@ -105,7 +106,7 @@
   vertical-align: middle;
   font-size: inherit;
   border-radius: @component-border-radius;
-  background-color: @text-color-subtle;
+  background-color: @component-background-color;
   transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
   && { margin: 0 .5em 0 0; } // override bootstrap
@@ -144,7 +145,7 @@
   &:checked {
     background-color: @background-color-info;
     &:active {
-      background-color: @text-color-subtle;
+      background-color: @component-background-color;
     }
     &:before {
       opacity: 1;
@@ -161,7 +162,7 @@
   &:indeterminate {
     background-color: @background-color-info;
     &:active {
-      background-color: @text-color-subtle;
+      background-color: @component-background-color;
     }
     &:after {
       opacity: 1;
@@ -184,7 +185,7 @@
   width: @component-size * 2;
   height: @component-size;
   border-radius: 2em;
-  background-color: @text-color-subtle;
+  background-color: @component-background-color;
   transition: background-color .2s cubic-bezier(0.5, 0.15, 0.2, 1);
 
   && { margin: 0; } // override bootstrap
@@ -226,8 +227,7 @@
   margin: @component-padding 0;
   height: 4px;
   border-radius: @component-border-radius;
-  border: 1px solid @input-border-color;
-  background-color: @input-background-color;
+  background-color: @component-background-color;
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: @component-size;
@@ -253,11 +253,11 @@
   width: @component-size * 2.5;
   height: @component-size * 2.5;
   border-radius: 50%;
-  border: 5px solid @input-border-color;
+  border: 2px solid @input-border-color;
   background-color: @input-background-color;
   &::-webkit-color-swatch-wrapper { padding: 0; }
   &::-webkit-color-swatch {
-    border: 1px solid hsla(0,0%,0%,.2);
+    border: 1px solid hsla(0,0%,0%,.1);
     border-radius: 50%;
     transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
     &:active {

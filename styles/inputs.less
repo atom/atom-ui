@@ -44,7 +44,19 @@
 // -------------------------
 
 .input-number {
+  position: relative;
   width: auto;
+  padding-right: 20px; // space for the spin-button
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: menulist;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    border-right: 4px solid @input-background-color; // a bit more padding
+    background-color: @input-background-color;
+  }
 }
 
 

@@ -46,16 +46,23 @@
 .input-number {
   position: relative;
   width: auto;
-  padding-right: 20px; // space for the spin-button
+  padding-right: 1.2em; // space for the spin button
   &::-webkit-inner-spin-button {
-    -webkit-appearance: menulist;
+    -webkit-appearance: menulist-button;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 16px;
-    border-right: 4px solid @input-background-color; // a bit more padding
-    background-color: @input-background-color;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    width: calc(.6em ~'+' 9px); // magic numbers, OMG!
+    outline: 1px solid @input-background-color;
+    outline-offset: -1px; // reduces border radius (that can't be changed)
+    border-right: .2em solid @background-color-highlight; // a bit more padding
+    background-color: @background-color-highlight;
+    transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+    &:active {
+      transform: scale(.9);
+      transition-duration: 0s;
+    }
   }
 }
 

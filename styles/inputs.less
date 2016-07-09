@@ -1,8 +1,21 @@
 @import "ui-variables";
 
 @component-size: @component-icon-size; // use for text-less controls like radio, checkboxes etc.
+@component-margin-side: .3em;
 @text-component-height: 2em;
 @component-background-color: mix(@text-color, @base-background-color, 20%);
+
+
+//
+// Overrides
+// -------------------------
+
+input.input-radio,
+input.input-checkbox,
+input.input-toggle {
+  margin-top: 0; // Override Bootstrap's 4px
+}
+
 
 //
 // Text Inputs
@@ -10,9 +23,15 @@
 
 .input-text,
 .input-search,
+.input-textarea {
+  display: block;
+  width: 100%;
+}
+
+.input-text,
+.input-search,
 .input-number,
 .input-textarea {
-  width: 150px;
   padding: .25em .4em;
   line-height: 1.5; // line-height + padding = @text-component-height
   border-radius: @component-border-radius;
@@ -83,8 +102,6 @@
   background-color: @component-background-color;
   transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
-  && { margin: 0 .5em 0 0; } // override bootstrap
-
   &:before {
     content: "";
     position: absolute;
@@ -127,8 +144,6 @@
   border-radius: @component-border-radius;
   background-color: @component-background-color;
   transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-
-  && { margin: 0 .5em 0 0; } // override bootstrap
 
   &&:focus {
     outline: 0; // TODO: Add it back
@@ -203,11 +218,10 @@
   font-size: inherit;
   width: @component-size * 2;
   height: @component-size;
+  vertical-align: middle;
   border-radius: 2em;
   background-color: @component-background-color;
   transition: background-color .2s cubic-bezier(0.5, 0.15, 0.2, 1);
-
-  && { margin: 0; } // override bootstrap
 
   &&:focus {
     outline: 0;
@@ -271,6 +285,7 @@
   padding: 0;
   width: @component-size * 2.5;
   height: @component-size * 2.5;
+  vertical-align: middle;
   border-radius: 50%;
   border: 2px solid @input-border-color;
   background-color: @input-background-color;
@@ -293,7 +308,60 @@
 
 .input-select {
   height: calc(@text-component-height ~'+' 2px); // + 2px? Magic!
+  vertical-align: middle;
   border-radius: @component-border-radius;
   border: 1px solid @button-border-color;
   background-color: @button-background-color;
+}
+
+
+//
+// Label
+// -------------------------
+
+.input-label {
+  margin-right: 1em;
+
+  // layout child components
+  .input-radio,
+  .input-checkbox,
+  .input-toggle {
+    margin-top: -.25em; // Vertical center (visually) - since most labels are upper case.
+    margin-right: @component-margin-side;
+  }
+  .input-toggle {
+    margin-left: @component-margin-side; // For text on the left
+  }
+}
+
+
+//
+// Legend
+// -------------------------
+
+.input-legend {
+  margin: 0 0 .75em 0;
+  font-size: 1.25em;
+  color: @text-color-highlight;
+  border-bottom: 1px solid fade(@text-color-highlight, 8%);
+}
+
+
+//
+// Input Set
+// -------------------------
+
+.input-set {
+  & + & {
+    margin-top: 1.5em; // spacing between sets
+  }
+
+  .input-label {
+    display: block;
+    margin-right: 0;
+    width: -webkit-max-content; // Only stretch as needed since labels can't be clicked
+  }
+  .input-label + .input-label {
+    margin-top: .75em; // spacing between labels/rows
+  }
 }

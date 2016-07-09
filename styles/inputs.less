@@ -20,20 +20,10 @@ input.input-toggle {
 }
 
 //
-// Text Inputs
+// Mixins
 // -------------------------
 
-.input-text,
-.input-search,
-.input-textarea {
-  display: block;
-  width: 100%;
-}
-
-.input-text,
-.input-search,
-.input-number,
-.input-textarea {
+.input-field-mixin() {
   padding: .25em .4em;
   line-height: 1.5; // line-height + padding = @text-component-height
   border-radius: @component-border-radius;
@@ -48,15 +38,42 @@ input.input-toggle {
   }
 }
 
+.input-block-mixin() {
+  display: block;
+  width: 100%;
+}
+
+
+//
+// Text
+// -------------------------
+
+.input-text {
+  .input-block-mixin();
+  .input-field-mixin();
+}
+
 
 //
 // Search
 // -------------------------
 
 .input-search {
+  .input-block-mixin();
+  .input-field-mixin();
   &&::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
   }
+}
+
+
+//
+// Text Area
+// -------------------------
+
+.input-textarea {
+  .input-block-mixin();
+  .input-field-mixin();
 }
 
 
@@ -65,6 +82,7 @@ input.input-toggle {
 // -------------------------
 
 .input-number {
+  .input-field-mixin();
   position: relative;
   width: auto;
   padding-right: 1.2em; // space for the spin button

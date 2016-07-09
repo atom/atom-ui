@@ -15,7 +15,9 @@ input.input-checkbox,
 input.input-toggle {
   margin-top: 0; // Override Bootstrap's 4px
 }
-
+.input-label {
+  margin-bottom: 0;
+}
 
 //
 // Text Inputs
@@ -320,9 +322,6 @@ input.input-toggle {
 // -------------------------
 
 .input-label {
-  margin-right: 1em;
-
-  // layout child components
   .input-radio,
   .input-checkbox,
   .input-toggle {
@@ -331,37 +330,5 @@ input.input-toggle {
   }
   .input-toggle {
     margin-left: @component-margin-side; // For text on the left
-  }
-}
-
-
-//
-// Legend
-// -------------------------
-
-.input-legend {
-  margin: 0 0 .75em 0;
-  font-size: 1.25em;
-  color: @text-color-highlight;
-  border-bottom: 1px solid fade(@text-color-highlight, 8%);
-}
-
-
-//
-// Input Set
-// -------------------------
-
-.input-set {
-  & + & {
-    margin-top: 1.5em; // spacing between sets
-  }
-
-  .input-label {
-    display: block;
-    margin-right: 0;
-    width: -webkit-max-content; // Only stretch as needed since labels can't be clicked
-  }
-  .input-label + .input-label {
-    margin-top: .75em; // spacing between labels/rows
   }
 }

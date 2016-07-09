@@ -45,111 +45,6 @@ input.input-toggle {
 
 
 //
-// Text
-// -------------------------
-
-.input-text {
-  .input-block-mixin();
-  .input-field-mixin();
-}
-
-
-//
-// Search
-// -------------------------
-
-.input-search {
-  .input-block-mixin();
-  .input-field-mixin();
-  &&::-webkit-search-cancel-button {
-    -webkit-appearance: searchfield-cancel-button;
-  }
-}
-
-
-//
-// Text Area
-// -------------------------
-
-.input-textarea {
-  .input-block-mixin();
-  .input-field-mixin();
-}
-
-
-//
-// Number
-// -------------------------
-
-.input-number {
-  .input-field-mixin();
-  position: relative;
-  width: auto;
-  padding-right: 1.2em; // space for the spin button
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: menulist-button;
-    position: absolute;
-    top: 1px;
-    bottom: 1px;
-    right: 1px;
-    width: calc(.6em ~'+' 9px); // magic numbers, OMG!
-    outline: 1px solid @input-background-color;
-    outline-offset: -1px; // reduces border radius (that can't be changed)
-    border-right: .2em solid @background-color-highlight; // a bit more padding
-    background-color: @background-color-highlight;
-    transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-    &:active {
-      transform: scale(.9);
-      transition-duration: 0s;
-    }
-  }
-}
-
-
-//
-// Radio
-// -------------------------
-
-.input-radio {
-  -webkit-appearance: none;
-  display: inline-block;
-  position: relative;
-  width: @component-size;
-  height: @component-size;
-  vertical-align: middle;
-  font-size: inherit;
-  border-radius: 50%;
-  background-color: @component-background-color;
-  transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-
-  &:before {
-    content: "";
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    border: @component-size/3 solid transparent;
-    background-clip: content-box;
-    background-color: @base-background-color;
-    transform: scale(0);
-    transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1);
-  }
-  &&:focus {
-    outline: none;
-  }
-  &:active {
-    background-color: @background-color-info;
-  }
-  &:checked {
-    background-color: @background-color-info;
-    &:before {
-      transform: scale(1);
-    }
-  }
-}
-
-
-//
 // Checkbox
 // -------------------------
 
@@ -228,6 +123,192 @@ input.input-toggle {
 
 
 //
+// Color
+// -------------------------
+
+.input-color {
+  -webkit-appearance: none;
+  padding: 0;
+  width: @component-size * 2.5;
+  height: @component-size * 2.5;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 2px solid @input-border-color;
+  background-color: @input-background-color;
+  &::-webkit-color-swatch-wrapper { padding: 0; }
+  &::-webkit-color-swatch {
+    border: 1px solid hsla(0,0%,0%,.1);
+    border-radius: 50%;
+    transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+    &:active {
+      transition-duration: 0s;
+      transform: scale(.9);
+    }
+  }
+}
+
+
+//
+// Label
+// -------------------------
+
+.input-label {
+  .input-radio,
+  .input-checkbox,
+  .input-toggle {
+    margin-top: -.25em; // Vertical center (visually) - since most labels are upper case.
+    margin-right: @component-margin-side;
+  }
+  .input-toggle {
+    margin-left: @component-margin-side; // For text on the left
+  }
+}
+
+
+//
+// Number
+// -------------------------
+
+.input-number {
+  .input-field-mixin();
+  position: relative;
+  width: auto;
+  padding-right: 1.2em; // space for the spin button
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: menulist-button;
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    width: calc(.6em ~'+' 9px); // magic numbers, OMG!
+    outline: 1px solid @input-background-color;
+    outline-offset: -1px; // reduces border radius (that can't be changed)
+    border-right: .2em solid @background-color-highlight; // a bit more padding
+    background-color: @background-color-highlight;
+    transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+    &:active {
+      transform: scale(.9);
+      transition-duration: 0s;
+    }
+  }
+}
+
+
+//
+// Radio
+// -------------------------
+
+.input-radio {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  width: @component-size;
+  height: @component-size;
+  vertical-align: middle;
+  font-size: inherit;
+  border-radius: 50%;
+  background-color: @component-background-color;
+  transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    border: @component-size/3 solid transparent;
+    background-clip: content-box;
+    background-color: @base-background-color;
+    transform: scale(0);
+    transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &&:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: @background-color-info;
+  }
+  &:checked {
+    background-color: @background-color-info;
+    &:before {
+      transform: scale(1);
+    }
+  }
+}
+
+
+//
+// Range (Slider)
+// -------------------------
+
+.input-range {
+  -webkit-appearance: none;
+  margin: @component-padding 0;
+  height: 4px;
+  border-radius: @component-border-radius;
+  background-color: @component-background-color;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: @component-size;
+    height: @component-size;
+    border-radius: 50%;
+    background-color: @background-color-info;
+    transition: transform .16s;
+    &:active {
+      transition-duration: 0s;
+      transform: scale(.9);
+    }
+  }
+}
+
+
+//
+// Search
+// -------------------------
+
+.input-search {
+  .input-block-mixin();
+  .input-field-mixin();
+  &&::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
+}
+
+
+//
+// Select
+// -------------------------
+
+.input-select {
+  height: calc(@text-component-height ~'+' 2px); // + 2px? Magic!
+  vertical-align: middle;
+  border-radius: @component-border-radius;
+  border: 1px solid @button-border-color;
+  background-color: @button-background-color;
+}
+
+
+//
+// Text
+// -------------------------
+
+.input-text {
+  .input-block-mixin();
+  .input-field-mixin();
+}
+
+
+//
+// Text Area
+// -------------------------
+
+.input-textarea {
+  .input-block-mixin();
+  .input-field-mixin();
+}
+
+
+//
 // Toggle
 // -------------------------
 
@@ -267,86 +348,5 @@ input.input-toggle {
   }
   &:checked:before {
     transform: translate3d(100%, 0, 0);
-  }
-}
-
-
-//
-// Slider
-// -------------------------
-
-.input-range {
-  -webkit-appearance: none;
-  margin: @component-padding 0;
-  height: 4px;
-  border-radius: @component-border-radius;
-  background-color: @component-background-color;
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: @component-size;
-    height: @component-size;
-    border-radius: 50%;
-    background-color: @background-color-info;
-    transition: transform .16s;
-    &:active {
-      transition-duration: 0s;
-      transform: scale(.9);
-    }
-  }
-}
-
-
-//
-// Color
-// -------------------------
-
-.input-color {
-  -webkit-appearance: none;
-  padding: 0;
-  width: @component-size * 2.5;
-  height: @component-size * 2.5;
-  vertical-align: middle;
-  border-radius: 50%;
-  border: 2px solid @input-border-color;
-  background-color: @input-background-color;
-  &::-webkit-color-swatch-wrapper { padding: 0; }
-  &::-webkit-color-swatch {
-    border: 1px solid hsla(0,0%,0%,.1);
-    border-radius: 50%;
-    transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-    &:active {
-      transition-duration: 0s;
-      transform: scale(.9);
-    }
-  }
-}
-
-
-//
-// Select
-// -------------------------
-
-.input-select {
-  height: calc(@text-component-height ~'+' 2px); // + 2px? Magic!
-  vertical-align: middle;
-  border-radius: @component-border-radius;
-  border: 1px solid @button-border-color;
-  background-color: @button-background-color;
-}
-
-
-//
-// Label
-// -------------------------
-
-.input-label {
-  .input-radio,
-  .input-checkbox,
-  .input-toggle {
-    margin-top: -.25em; // Vertical center (visually) - since most labels are upper case.
-    margin-right: @component-margin-side;
-  }
-  .input-toggle {
-    margin-left: @component-margin-side; // For text on the left
   }
 }

@@ -1,0 +1,208 @@
+@import "ui-variables";
+
+//
+// Breadcrumbs
+// --------------------------------
+
+.breadcrumbs {
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+.breadcrumbs-item {
+  display: inline-block;
+  color: @text-color-subtle;
+
+
+  // active
+  &:hover,
+  &:last-child {
+    color: @text-color-selected;
+  }
+  &:active {
+    color: @text-color-subtle;
+  }
+
+  // dividers
+  & + .breadcrumbs-item::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 1em;
+    height: 2em;
+    transform: rotate(15deg);
+    border-left: 1px solid @base-border-color;
+  }
+}
+
+
+//
+// Nav
+// --------------------------------
+
+.a-nav {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-user-select: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.a-nav-item {
+  flex: 1;
+  color: @text-color-subtle;
+  border: 1px solid @base-border-color;
+  border-width: 0 0 1px 0;
+  line-height: 1;
+  text-align: center;
+  padding: @component-padding*0.75 @component-padding;
+  cursor: default;
+
+  &:hover {
+    color: @text-color-highlight;
+  }
+  &:active,
+  &.selected {
+    color: @text-color-selected;
+    border-color: @text-color-subtle;
+  }
+}
+
+// Vertical -------------
+
+.a-nav--vertical {
+  overflow: auto;
+  flex-direction: column;
+
+  .a-nav-item {
+    text-align: left;
+    border-width: 0 0 0 1px;
+  }
+}
+
+
+
+
+//
+// Panel
+// --------------------------------
+
+
+.a-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  -webkit-user-select: none;
+
+  .a-panel-heading {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    cursor: default;
+    box-shadow: inset 0 -1px 0 @base-border-color;
+    background-color: @tool-panel-background-color;
+  }
+
+  .a-panel-nav {
+    flex: 1;
+    display: flex;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .a-panel-nav-item {
+    color: @text-color-subtle;
+    border: 1px solid transparent;
+    border-width: 0 1px;
+    line-height: 1;
+    text-align: center;
+    padding: @component-padding*0.75 @component-padding;
+
+    &:hover {
+      color: @text-color-highlight;
+    }
+    &:active,
+    &.selected {
+      color: @text-color-selected;
+      border-color: @base-border-color;
+      background-color: @base-background-color;
+      &:first-child {
+        border-left-color: transparent;
+      }
+    }
+  }
+
+  .a-panel-icon-button {
+    color: inherit;
+    padding: 0 @component-padding/2;
+    min-width: 2em;
+    border: none;
+    border-left: 1px solid @base-border-color;
+    background-color: transparent;
+    cursor: default;
+    &:hover {
+      color: @text-color-highlight;
+    }
+    &:active {
+      color: @text-color-subtle;
+    }
+    &:before {
+      margin-right: 0;
+    }
+  }
+
+  .a-panel-body {
+    position: relative;
+    overflow: auto;
+    flex: 1;
+    min-height: 0;
+    background-color: @base-background-color;
+    -webkit-user-select: text;
+  }
+}
+
+// Vertical -------------
+
+.a-panel--vertical {
+  flex-direction: row;
+
+  .a-panel-heading {
+    flex-direction: column;
+    box-shadow: inset -1px 0 0 @base-border-color;
+  }
+
+  .a-panel-nav {
+    flex-direction: column;
+  }
+
+  .a-panel-nav-item {
+    border-width: 1px 0;
+
+    &:active,
+    &.selected {
+      &:first-child {
+        border-top-color: transparent;
+      }
+    }
+
+    &.icon::before {
+      margin-right: 0;
+    }
+  }
+
+  .a-panel-icon-button {
+    color: inherit;
+    padding: @component-padding/2 0;
+    min-width: 0;
+    min-height: 2em;
+    border: none;
+    border-top: 1px solid @base-border-color;
+  }
+}

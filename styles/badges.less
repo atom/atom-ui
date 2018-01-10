@@ -22,10 +22,10 @@
     background-color: @bg;
   }
   .badge-color();
-  &.badge-info    { .badge-color(white, @background-color-info); }
-  &.badge-success { .badge-color(white, @background-color-success); }
-  &.badge-warning { .badge-color(white, @background-color-warning); }
-  &.badge-error   { .badge-color(white, @background-color-error); }
+  &.badge-info    { .badge-color(var(--state-fg), var(--accent-bg)); }
+  &.badge-success { .badge-color(var(--state-fg), var(--success-bg)); }
+  &.badge-warning { .badge-color(var(--state-fg), var(--warning-bg)); }
+  &.badge-error   { .badge-color(var(--state-fg), var(--error-bg)); }
 
 
   // Size ----------------------

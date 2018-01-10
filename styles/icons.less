@@ -1,13 +1,13 @@
 @import "ui-variables";
 
 .icon::before {
-  margin-right: @component-icon-padding;
+  margin-right: var(--spacer-1);
 }
 
 a.icon {
   text-decoration: none;
-  color: @text-color;
+  color: var(--fg);
   &:hover{
-    color: @text-color-highlight;
+    color: var(--fg-strong);
   }
 }

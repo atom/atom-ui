@@ -3,7 +3,6 @@
 @component-size: @component-icon-size; // use for text-less controls like radio, checkboxes etc.
 @component-margin-side: .3em;
 @text-component-height: 2em;
-@component-background-color: mix(@text-color, @base-background-color, 20%);
 
 
 //
@@ -26,15 +25,15 @@ input.input-toggle {
 .input-field-mixin() {
   padding: .25em .4em;
   line-height: 1.5; // line-height + padding = @text-component-height
-  border-radius: @component-border-radius;
-  border: 1px solid @input-border-color;
-  background-color: @input-background-color;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-input);
   &::-webkit-input-placeholder {
-    color: @text-color-subtle;
+    color: var(--fg-subtle);
   }
   &:invalid {
-    color: @text-color-error;
-    border-color: @background-color-error;
+    color: var(--error-fg);
+    border-color: var(--error-bg);
   }
 }
 
@@ -58,8 +57,8 @@ input.input-toggle {
     width: @component-size;
     height: @component-size;
     font-size: inherit;
-    border-radius: @component-border-radius;
-    background-color: @component-background-color;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-highlight);
     transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
     &&:focus {
@@ -96,7 +95,7 @@ input.input-toggle {
     &:checked {
       background-color: @background-color-info;
       &:active {
-        background-color: @component-background-color;
+        background-color: var(--bg-highlight);
       }
       &:before {
         opacity: 1;
@@ -113,7 +112,7 @@ input.input-toggle {
     &:indeterminate {
       background-color: @background-color-info;
       &:active {
-        background-color: @component-background-color;
+        background-color: var(--bg-highlight);
       }
       &:after {
         opacity: 1;
@@ -139,8 +138,8 @@ input.input-toggle {
     width: @component-size * 2.5;
     height: @component-size * 2.5;
     border-radius: 50%;
-    border: 2px solid @input-border-color;
-    background-color: @input-background-color;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-input);
     &::-webkit-color-swatch-wrapper { padding: 0; }
     &::-webkit-color-swatch {
       border: 1px solid hsla(0,0%,0%,.1);
@@ -190,10 +189,10 @@ input.input-toggle {
         bottom: 1px;
         right: 1px;
         width: calc(.6em ~'+' 9px); // magic numbers, OMG!
-        outline: 1px solid @input-background-color;
+        outline: 1px solid var(--bg-input);
         outline-offset: -1px; // reduces border radius (that can't be changed)
-        border-right: .2em solid @background-color-highlight; // a bit more padding
-        background-color: @background-color-highlight;
+        border-right: .2em solid var(--bg-highlight); // a bit more padding
+        background-color: var(--bg-highlight);
         transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
         &:active {
           transform: scale(.9);
@@ -220,7 +219,7 @@ input.input-toggle {
     height: @component-size;
     font-size: inherit;
     border-radius: 50%;
-    background-color: @component-background-color;
+    background-color: var(--bg-highlight);
     transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
     &:before {
@@ -260,8 +259,8 @@ input.input-toggle {
     -webkit-appearance: none;
     margin: @component-padding 0;
     height: 4px;
-    border-radius: @component-border-radius;
-    background-color: @component-background-color;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-highlight);
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: @component-size;
@@ -303,9 +302,9 @@ input.input-toggle {
 
   & when (@use-custom-controls) {
     height: calc(@text-component-height ~'+' 2px); // + 2px? Magic!
-    border-radius: @component-border-radius;
-    border: 1px solid @button-border-color;
-    background-color: @button-background-color;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-control);
   }
 }
 
@@ -350,7 +349,7 @@ input.input-toggle {
     height: @component-size;
     vertical-align: middle;
     border-radius: 2em;
-    background-color: @component-background-color;
+    background-color: var(--bg-highlight);
     transition: background-color .2s cubic-bezier(0.5, 0.15, 0.2, 1);
 
     &&:focus {

@@ -26,7 +26,7 @@ input.input-toggle {
   padding: .25em .4em;
   line-height: 1.5; // line-height + padding = @text-component-height
   border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   background-color: var(--bg-input);
   &::-webkit-input-placeholder {
     color: var(--fg-subtle);
@@ -138,7 +138,7 @@ input.input-toggle {
     width: @component-size * 2.5;
     height: @component-size * 2.5;
     border-radius: 50%;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--border);
     background-color: var(--bg-input);
     &::-webkit-color-swatch-wrapper { padding: 0; }
     &::-webkit-color-swatch {
@@ -303,7 +303,7 @@ input.input-toggle {
   & when (@use-custom-controls) {
     height: calc(@text-component-height ~'+' 2px); // + 2px? Magic!
     border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     background-color: var(--bg-control);
   }
 }

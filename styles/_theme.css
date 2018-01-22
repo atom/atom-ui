@@ -1,0 +1,123 @@
+
+/* Atom theme */
+
+:root {
+
+  /* Colors --------------------------------- */
+
+
+  /* App */
+
+  --hue: 260;
+  --saturation: 33%;
+  --lightness: 20%;
+
+  --app-fg:             hsl( var(--hue), var(--saturation),               calc(  90% - var(--lightness)) );
+  --app-fg-strong:      hsl( var(--hue), var(--saturation),               calc( 100% - var(--lightness)) );
+  --app-fg-subtle:      hsl( var(--hue), calc( var(--saturation) - 10%),  calc(  80% - var(--lightness)) );
+
+  --app-bg:             hsl( var(--hue), var(--saturation), var(--lightness) );
+  --app-bg-highlight:   hsl( var(--hue), var(--saturation), calc( var(--lightness) + 4%) );
+  --app-bg-selected:    hsl( var(--hue), var(--saturation), calc( var(--lightness) + 6%) );
+  --app-bg-control:     hsl( var(--hue), var(--saturation), calc( var(--lightness) + 12%) );
+  --app-bg-input:       hsl( var(--hue), var(--saturation), calc( var(--lightness) - 4%) );
+
+  --app-border:         hsl( var(--hue), var(--saturation), calc( var(--lightness) - 8%) );
+
+
+  /* Editor */
+
+  --editor-fg:           hsl(320, 20%, 33%);
+  --editor-fg-strong:    hsl(320, 50%, 18%);
+  --editor-fg-subtle:    hsl(320, 10%, 50%);
+  
+  --editor-bg:           hsl(30, 40%, 94%);
+  --editor-bg-highlight: hsl(30, 20%, 99%);
+  --editor-bg-selected:  hsl(30, 20%, 90%);
+  --editor-bg-control:   hsl(30, 20%, 99%);
+  --editor-bg-input:     hsl(30, 10%, 82%);
+  
+  --editor-border:       hsl(30, 10%, 82%);
+
+
+
+  /* Overlay */
+
+  --overlay-fg:           hsl( 220, 10%, 30% );
+  --overlay-fg-strong:    hsl( 220, 20%, 10% );
+  --overlay-fg-subtle:    hsl( 220, 10%, 50% );
+  
+  --overlay-bg:           hsl( 220, 100%, 80% );
+  --overlay-bg-highlight: hsl( 220, 100%, 86% );
+  --overlay-bg-selected:  hsl( 220, 100%, 92% );
+  --overlay-bg-control:   hsl( 220, 100%, 96% );
+  --overlay-bg-input:     hsl( 220,  66%, 66% );
+  
+  --overlay-border:       hsl( 220,  66%, 70% );
+
+
+
+  /* States */
+  
+  --accent-fg: hsl(340,  90%, 77%);
+  --accent-bg: hsl(340,  90%, 56%);
+  
+  --success-fg: hsl(132,  60%, 55%);
+  --success-bg: hsl(132,  60%, 44%);
+  
+  --warning-fg: hsl( 37,  90%, 70%);
+  --warning-bg: hsl( 37,  90%, 44%);
+  
+  --error-fg:   hsl(  0,  90%, 66%);
+  --error-bg:   hsl(  0,  90%, 56%);
+
+  --state-fg:white; /* Text on state bg colors, make sure contrast is high enough */
+  
+
+  /* Syntax */
+  
+  --syntax-m-1: hsl( var(--hue), 20%, 90%);
+  --syntax-m-2: hsl( var(--hue), 20%, 70%);
+  --syntax-m-3: hsl( var(--hue), 20%, 50%);
+  --syntax-m-4: hsl( var(--hue), 20%, 40%);
+
+  --syntax-1: hsl(191, 91%, 73%);
+  --syntax-2: hsl( 48, 71%, 76%);
+  --syntax-3: hsl(  5, 91%, 73%);
+  --syntax-4: hsl(286, 82%, 79%);
+  --syntax-5: hsl(212, 99%, 75%);
+  --syntax-6: hsl(282, 99%, 75%);
+  --syntax-7: hsl(191, 91%, 73%);
+  --syntax-8: hsl(118, 69%, 78%);
+
+}
+
+
+:root {
+
+  /* Typography --------------------------------- */
+
+  --font-size:    12px;
+  --font-family:  'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  --font-height:  1.5;
+
+
+  /* Layout --------------------------------- */
+
+  --bar-height: 28px; /* Used for tabs, status-bar */
+
+  --spacer:    8px; /* default */
+
+  --spacer-0:    0;
+  --spacer-1:  4px;
+  --spacer-2:  8px;
+  --spacer-3: 12px;
+  --spacer-4: 24px;
+  --spacer-5: 32px;
+  --spacer-6: 40px;
+
+
+  /* Misc --------------------------------- */
+
+  --border-radius:  3px;
+}

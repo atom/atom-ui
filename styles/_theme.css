@@ -27,6 +27,19 @@
 
   /* Editor */
 
+  --editor-fg:           hsl(260, 66%, 77%);
+  --editor-fg-strong:    hsl(260, 99%, 99%);
+  --editor-fg-subtle:    hsl(260, 10%, 50%);
+  
+  --editor-bg:           hsl(260, 40%, 24%);
+  --editor-bg-highlight: hsl(260, 40%, 30%);
+  --editor-bg-selected:  hsl(260, 20%, 36%);
+  --editor-bg-control:   hsl(260, 40%, 40%);
+  --editor-bg-input:     hsl(260, 10%, 20%);
+  
+  --editor-border:       hsl(260, 10%, 10%);
+
+  /* light
   --editor-fg:           hsl(320, 20%, 33%);
   --editor-fg-strong:    hsl(320, 50%, 18%);
   --editor-fg-subtle:    hsl(320, 10%, 50%);
@@ -38,6 +51,7 @@
   --editor-bg-input:     hsl(30, 10%, 82%);
   
   --editor-border:       hsl(30, 10%, 82%);
+  */
 
 
 
@@ -97,9 +111,10 @@
 
   /* Typography --------------------------------- */
 
-  --font-size:    12px;
-  --font-family:  'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
-  --font-height:  1.5;
+  --font-size:            12px;
+  --font-family:          'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  --font-height:          calc( var(--font-size) * 1.5 );
+  --font-height-control:  calc( var(--font-size) + var(--spacer) );
 
 
   /* Layout --------------------------------- */

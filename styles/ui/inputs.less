@@ -8,6 +8,7 @@
   line-height: var(--input-size);
   border-radius: var(--border-radius);
   border: 1px solid var(--border);
+  font: inherit;
   color: inherit;
   background-color: var(--bg-input);
   &::-webkit-input-placeholder {
@@ -34,7 +35,7 @@
   vertical-align: middle;
   font-size: inherit;
   border-radius: var(--border-radius);
-  background-color: var(--bg-input);
+  background-color: var(--bg-control);
   transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
   &&:focus {
@@ -71,7 +72,7 @@
   &:checked {
     background-color: var(--accent-bg);
     &:active {
-      background-color: var(--bg-input);
+      background-color: var(--bg-control);
     }
     &:before {
       opacity: 1;
@@ -88,7 +89,7 @@
   &:indeterminate {
     background-color: var(--accent-bg);
     &:active {
-      background-color: var(--bg-input);
+      background-color: var(--bg-control);
     }
     &:after {
       opacity: 1;
@@ -107,8 +108,8 @@
 .ColorPicker {
   -webkit-appearance: none;
   padding: 0;
-  width: calc( var(--control-size) ~'*' 2.5 );
-  height: calc( var(--control-size) ~'*' 2.5 );
+  width: calc( var(--control-size) ~'*' 2 );
+  height: calc( var(--control-size) ~'*' 2 );
   vertical-align: middle;
   border-radius: 50%;
   border: 2px solid var(--border);
@@ -174,7 +175,7 @@
   vertical-align: middle;
   font-size: inherit;
   border-radius: 50%;
-  background-color: var(--bg-input);
+  background-color: var(--bg-control);
   transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
   &:before {
@@ -213,7 +214,7 @@
   margin: var(--spacer-1) 0;
   height: 4px;
   border-radius: var(--border-radius);
-  background-color: var(--bg-input);
+  background-color: var(--bg-control);
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: var(--control-size);
@@ -249,6 +250,7 @@
   vertical-align: middle;
   height: var(--input-size);
   box-sizing: content-box;
+  color: inherit;
   border-radius: var(--border-radius);
   border: 1px solid var(--border);
   background-color: var(--bg-control);
@@ -287,7 +289,7 @@
   margin: 0;
   vertical-align: middle;
   border-radius: var(--control-size);
-  background-color: var(--bg-input);
+  background-color: var(--bg-control);
   transition: background-color .2s cubic-bezier(0.5, 0.15, 0.2, 1);
 
   &&:focus {

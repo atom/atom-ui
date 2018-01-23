@@ -1,32 +1,14 @@
-@import "ui-variables";
-
-@component-size: @component-icon-size; // use for text-less controls like radio, checkboxes etc.
-@component-margin-side: .3em;
-@text-component-height: 2em;
-
 
 //
-// Overrides
-// -------------------------
-
-input.input-radio,
-input.input-checkbox,
-input.input-toggle {
-  margin-top: 0; // Override Bootstrap's 4px
-}
-.input-label {
-  margin-bottom: 0;
-}
-
-//
-// Mixins
+// Inputs + controls
 // -------------------------
 
 .input-field-mixin() {
-  padding: .25em .4em;
-  line-height: 1.5; // line-height + padding = @text-component-height
+  padding: 0 var(--spacer-1);
+  line-height: var(--input-size);
   border-radius: var(--border-radius);
   border: 1px solid var(--border);
+  color: inherit;
   background-color: var(--bg-input);
   &::-webkit-input-placeholder {
     color: var(--fg-subtle);
@@ -37,88 +19,81 @@ input.input-toggle {
   }
 }
 
-.input-block-mixin() {
-  display: block;
-  width: 100%;
-}
-
 
 //
 // Checkbox
 // -------------------------
 
-.input-checkbox {
+.Checkbox {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  width: var(--control-size);
+  height: var(--control-size);
+  margin: 0;
   vertical-align: middle;
+  font-size: inherit;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-input);
+  transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
-  & when (@use-custom-controls) {
-    -webkit-appearance: none;
-    display: inline-block;
-    position: relative;
-    width: @component-size;
-    height: @component-size;
-    font-size: inherit;
-    border-radius: var(--border-radius);
-    background-color: var(--bg-highlight);
-    transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+  &&:focus {
+    outline: 0; // TODO: Add it back
+  }
+  &:active {
+    background-color: var(--accent-bg);
+  }
 
-    &&:focus {
-      outline: 0; // TODO: Add it back
-    }
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: calc( var(--control-size) ~'*' .75 );
+    left: calc( var(--control-size) ~'*' .4 );
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--state-fg);
+    transform-origin: 0 0;
+    opacity: 0;
+    transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1), opacity .1s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &:before {
+    width: calc( var(--control-size) ~'*' .33 );
+    transform: translate3d(0,0,0) rotate(225deg) scale(0);
+  }
+  &:after {
+    width: calc( var(--control-size) ~'*' .66 );
+    margin: -1px;
+    transform: translate3d(0,0,0) rotate(-45deg) scale(0);
+    transition-delay: .05s;
+  }
+
+  &:checked {
+    background-color: var(--accent-bg);
     &:active {
-      background-color: @background-color-info;
-    }
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: @component-size * .75;
-      left: @component-size * .4;
-      height: 2px;
-      border-radius: 1px;
-      background-color: @base-background-color;
-      transform-origin: 0 0;
-      opacity: 0;
-      transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1), opacity .1s cubic-bezier(0.5, 0.15, 0.2, 1);
+      background-color: var(--bg-input);
     }
     &:before {
-      width: @component-size * .33;
-      transform: translate3d(0,0,0) rotate(225deg) scale(0);
-    }
-    &:after {
-      width: @component-size * .66;
-      margin: -1px;
-      transform: translate3d(0,0,0) rotate(-45deg) scale(0);
+      opacity: 1;
+      transform: translate3d(0,0,0) rotate(225deg) scale(1);
       transition-delay: .05s;
     }
-
-    &:checked {
-      background-color: @background-color-info;
-      &:active {
-        background-color: var(--bg-highlight);
-      }
-      &:before {
-        opacity: 1;
-        transform: translate3d(0,0,0) rotate(225deg) scale(1);
-        transition-delay: .05s;
-      }
-      &:after {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) rotate(-45deg) scale(1);
-        transition-delay: 0;
-      }
+    &:after {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotate(-45deg) scale(1);
+      transition-delay: 0;
     }
+  }
 
-    &:indeterminate {
-      background-color: @background-color-info;
-      &:active {
-        background-color: var(--bg-highlight);
-      }
-      &:after {
-        opacity: 1;
-        transform: translate3d(@component-size * -.14, @component-size * -.25, 0) rotate(0deg) scale(1);
-        transition-delay: 0;
-      }
+  &:indeterminate {
+    background-color: var(--accent-bg);
+    &:active {
+      background-color: var(--bg-input);
+    }
+    &:after {
+      opacity: 1;
+      transform: translate3d( calc( var(--control-size) ~'*' -.14 ), calc( var(--control-size) ~'*' -.25 ), 0) rotate(0deg) scale(1);
+      transition-delay: 0;
     }
   }
 }
@@ -129,26 +104,23 @@ input.input-toggle {
 // -------------------------
 
 
-.input-color {
+.ColorPicker {
+  -webkit-appearance: none;
+  padding: 0;
+  width: calc( var(--control-size) ~'*' 2.5 );
+  height: calc( var(--control-size) ~'*' 2.5 );
   vertical-align: middle;
-
-  & when (@use-custom-controls) {
-    -webkit-appearance: none;
-    padding: 0;
-    width: @component-size * 2.5;
-    height: @component-size * 2.5;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background-color: var(--bg-input);
+  &::-webkit-color-swatch-wrapper { padding: 0; }
+  &::-webkit-color-swatch {
+    border: 1px solid hsla(0,0%,0%,.1);
     border-radius: 50%;
-    border: 2px solid var(--border);
-    background-color: var(--bg-input);
-    &::-webkit-color-swatch-wrapper { padding: 0; }
-    &::-webkit-color-swatch {
-      border: 1px solid hsla(0,0%,0%,.1);
-      border-radius: 50%;
-      transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-      &:active {
-        transition-duration: 0s;
-        transform: scale(.9);
-      }
+    transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+    &:active {
+      transition-duration: 0s;
+      transform: scale(.9);
     }
   }
 }
@@ -156,48 +128,32 @@ input.input-toggle {
 
 
 //
-// Label
-// -------------------------
-
-.input-label {
-  .input-radio,
-  .input-checkbox,
-  .input-toggle {
-    margin-top: -.25em; // Vertical center (visually) - since most labels are upper case.
-    margin-right: @component-margin-side;
-  }
-}
-
-
-//
 // Number
 // -------------------------
 
-.input-number {
+.NumberInput {
+  .input-field-mixin();
+  position: relative;
+  width: auto;
   vertical-align: middle;
 
-  & when (@use-custom-controls) {
-    .input-field-mixin();
-    position: relative;
-    width: auto;
-    .platform-darwin & {
-      padding-right: 1.2em; // space for the spin button
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: menulist-button;
-        position: absolute;
-        top: 1px;
-        bottom: 1px;
-        right: 1px;
-        width: calc(.6em ~'+' 9px); // magic numbers, OMG!
-        outline: 1px solid var(--bg-input);
-        outline-offset: -1px; // reduces border radius (that can't be changed)
-        border-right: .2em solid var(--bg-highlight); // a bit more padding
-        background-color: var(--bg-highlight);
-        transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-        &:active {
-          transform: scale(.9);
-          transition-duration: 0s;
-        }
+  .platform-darwin & {
+    padding-right: 1.2em; // space for the spin button
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: menulist-button;
+      position: absolute;
+      top: 1px;
+      bottom: 1px;
+      right: 1px;
+      width: calc(.6em ~'+' 9px); // magic numbers, OMG!
+      outline: 1px solid var(--bg-input);
+      outline-offset: -1px; // reduces border radius (that can't be changed)
+      border-right: .2em solid var(--bg-highlight); // a bit more padding
+      background-color: var(--bg-highlight);
+      transition: transform .16s cubic-bezier(0.5, 0.15, 0.2, 1);
+      &:active {
+        transform: scale(.9);
+        transition-duration: 0s;
       }
     }
   }
@@ -208,43 +164,41 @@ input.input-toggle {
 // Radio
 // -------------------------
 
-.input-radio {
+.Radio {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  width: var(--control-size);
+  height: var(--control-size);
+  margin: 0;
   vertical-align: middle;
+  font-size: inherit;
+  border-radius: 50%;
+  background-color: var(--bg-input);
+  transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
 
-  & when (@use-custom-controls) {
-    -webkit-appearance: none;
-    display: inline-block;
-    position: relative;
-    width: @component-size;
-    height: @component-size;
-    font-size: inherit;
-    border-radius: 50%;
-    background-color: var(--bg-highlight);
-    transition: background-color .16s cubic-bezier(0.5, 0.15, 0.2, 1);
-
+  &:before {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    border: calc( var(--control-size) ~'/' 3 ) solid transparent;
+    background-clip: content-box;
+    background-color: var(--state-fg);
+    transform: scale(0);
+    transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &&:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: var(--accent-bg);
+  }
+  &:checked {
+    background-color: var(--accent-bg);
     &:before {
-      content: "";
-      position: absolute;
-      width: inherit;
-      height: inherit;
-      border-radius: inherit;
-      border: @component-size/3 solid transparent;
-      background-clip: content-box;
-      background-color: @base-background-color;
-      transform: scale(0);
-      transition: transform .1s cubic-bezier(0.5, 0.15, 0.2, 1);
-    }
-    &&:focus {
-      outline: none;
-    }
-    &:active {
-      background-color: @background-color-info;
-    }
-    &:checked {
-      background-color: @background-color-info;
-      &:before {
-        transform: scale(1);
-      }
+      transform: scale(1);
     }
   }
 }
@@ -254,24 +208,22 @@ input.input-toggle {
 // Range (Slider)
 // -------------------------
 
-.input-range {
-  & when (@use-custom-controls) {
+.Slider {
+  -webkit-appearance: none;
+  margin: var(--spacer-1) 0;
+  height: 4px;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-input);
+  &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    margin: @component-padding 0;
-    height: 4px;
-    border-radius: var(--border-radius);
-    background-color: var(--bg-highlight);
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: @component-size;
-      height: @component-size;
-      border-radius: 50%;
-      background-color: @background-color-info;
-      transition: transform .16s;
-      &:active {
-        transition-duration: 0s;
-        transform: scale(.9);
-      }
+    width: var(--control-size);
+    height: var(--control-size);
+    border-radius: 50%;
+    background-color: var(--accent-bg);
+    transition: transform .16s;
+    &:active {
+      transition-duration: 0s;
+      transform: scale(.9);
     }
   }
 }
@@ -281,14 +233,10 @@ input.input-toggle {
 // Search
 // -------------------------
 
-.input-search {
-  .input-block-mixin();
+.SearchInput {
+  .input-field-mixin();
   &&::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
-  }
-
-  & when (@use-custom-controls) {
-    .input-field-mixin();
   }
 }
 
@@ -297,15 +245,13 @@ input.input-toggle {
 // Select
 // -------------------------
 
-.input-select {
+.Select {
   vertical-align: middle;
-
-  & when (@use-custom-controls) {
-    height: calc(@text-component-height ~'+' 2px); // + 2px? Magic!
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border);
-    background-color: var(--bg-control);
-  }
+  height: var(--input-size);
+  box-sizing: content-box;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border);
+  background-color: var(--bg-control);
 }
 
 
@@ -313,12 +259,8 @@ input.input-toggle {
 // Text
 // -------------------------
 
-.input-text {
-  .input-block-mixin();
-
-  & when (@use-custom-controls) {
-    .input-field-mixin();
-  }
+.TextInput {
+  .input-field-mixin();
 }
 
 
@@ -326,56 +268,68 @@ input.input-toggle {
 // Text Area
 // -------------------------
 
-.input-textarea {
-  .input-block-mixin();
-
-  & when (@use-custom-controls) {
-    .input-field-mixin();
-  }
+.TextArea {
+  .input-field-mixin();
 }
 
 
 //
-// Toggle
+// Switch
 // -------------------------
 
-.input-toggle {
-  & when (@use-custom-controls) {
-    -webkit-appearance: none;
-    display: inline-block;
-    position: relative;
-    font-size: inherit;
-    width: @component-size * 2;
-    height: @component-size;
-    vertical-align: middle;
-    border-radius: 2em;
-    background-color: var(--bg-highlight);
-    transition: background-color .2s cubic-bezier(0.5, 0.15, 0.2, 1);
+.Switch {
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  font-size: inherit;
+  width: calc( var(--control-size) ~'*' 2 );
+  height: var(--control-size);
+  margin: 0;
+  vertical-align: middle;
+  border-radius: var(--control-size);
+  background-color: var(--bg-input);
+  transition: background-color .2s cubic-bezier(0.5, 0.15, 0.2, 1);
 
-    &&:focus {
-      outline: 0;
-    }
-    &:checked {
-      background-color: @background-color-info;
-    }
+  &&:focus {
+    outline: 0;
+  }
+  &:checked {
+    background-color: var(--accent-bg);
+  }
 
-    // Thumb
-    &:before {
-      content: "";
-      position: absolute;
-      width: @component-size;
-      height: @component-size;
-      border-radius: inherit;
-      border: @component-size/4 solid transparent;
-      background-clip: content-box;
-      background-color: @base-background-color;
-      transition: transform .2s cubic-bezier(0.5, 0.15, 0.2, 1);
-    }
-    &:active:before {
-      opacity: .5;
-    }
-    &:checked:before {
-      transform: translate3d(100%, 0, 0);
-    }
+  // Thumb
+  &:before {
+    content: "";
+    position: absolute;
+    width: var(--control-size);
+    height: var(--control-size);
+    border-radius: inherit;
+    border: calc( var(--control-size) ~'/' 4 ) solid transparent;
+    background-clip: content-box;
+    background-color: var(--state-fg);
+    transition: transform .2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  }
+  &:active:before {
+    opacity: .5;
+  }
+  &:checked:before {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+
+
+//
+// Label
+// -------------------------
+
+.Label {
+  padding: 0;
+
+  .Checkbox,
+  .Radio,
+  .Switch {
+    margin-right: var(--spacer-1);
+    vertical-align: -4px; // TODO: Find some sort of logic for this
   }
 }

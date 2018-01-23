@@ -48,9 +48,9 @@
   --editor-bg-highlight: hsl(30, 20%, 99%);
   --editor-bg-selected:  hsl(30, 20%, 90%);
   --editor-bg-control:   hsl(30, 20%, 99%);
-  --editor-bg-input:     hsl(30, 10%, 82%);
+  --editor-bg-input:     hsl(30, 10%, 84%);
   
-  --editor-border:       hsl(30, 10%, 82%);
+  --editor-border:       hsl(30, 10%, 80%);
  
 
 
@@ -114,12 +114,14 @@
   --font-size:            12px;
   --font-family:          'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
   --font-height:          calc( var(--font-size) * 1.5 );
-  --font-height-control:  calc( var(--font-size) + var(--spacer) );
 
 
   /* Layout --------------------------------- */
 
-  --bar-height: 28px; /* Used for tabs, status-bar */
+  --input-size:   calc( var(--font-size) + var(--spacer) ); /* Text input, button height */
+  --control-size: calc( var(--font-size) + var(--spacer-1) ); /* Checkbox, radio inputs */
+  --bar-height:     28px; /* Used for tabs, status-bar */
+  
 
   --spacer:    8px; /* default */
 

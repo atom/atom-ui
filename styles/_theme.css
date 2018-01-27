@@ -78,12 +78,15 @@
   
   --success-fg: hsl(132,  60%, 55%);
   --success-bg: hsl(132,  60%, 44%);
+  --success-bg-faded: hsla(132,  60%, 44%, .2);
   
   --warning-fg: hsl( 37,  90%, 70%);
   --warning-bg: hsl( 37,  90%, 44%);
+  --warning-bg-faded: hsla(37,  90%, 44%, .2);
   
   --error-fg:   hsl(  0,  90%, 66%);
   --error-bg:   hsl(  0,  90%, 56%);
+  --error-bg-faded: hsla(0,  90%, 56%, .2);
 
   --state-fg:white; /* Text on state bg colors, make sure contrast is high enough */
   
